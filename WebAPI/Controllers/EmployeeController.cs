@@ -1,0 +1,50 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using WebAPI.AppCode.Interface;
+using WebAPI.AppCode.Services;
+using WebAPI.Models;
+
+namespace WebAPI.Controllers
+{
+    [Route("api/")]
+    [ApiController]
+    public class EmployeeController : ControllerBase
+    {
+        private readonly IEmployeeService _empservice;
+        public EmployeeController(IEmployeeService empservice)
+        {
+            _empservice = empservice;
+        }
+        [HttpGet("GetDepartment")]
+        public async Task<IActionResult> GetDepartment()
+        {
+            var res = await _empservice.GetDepartment();
+            return Ok(res);
+        }
+        [HttpPost("AddEployee")]
+        public async Task<IActionResult> AddEployee(Employee req)
+        {
+            var res = await _empservice.AddAsync(req);
+            return Ok(res);
+        }
+        [HttpPost("GetEmployee")]
+        public async Task<IActionResult> GetEmployee()
+        {
+            var res = await _empservice.GetEmployee();
+            return Ok(res);
+        }
+        [HttpPost("GetEmployeeById")]
+        public async Task<IActionResult> GetEmployeeById(int Id)
+        {
+            var res = await _empservice.GetEmployeeById(Id);
+            return Ok(res);
+        }
+        [HttpDelete("DeleteEmployee")]
+        public async Task<IActionResult> DeleteEmployee(int Id)
+        {
+            var res = await _empservice.Delete(Id);
+            return Ok(res);
+        }
+    }
+}

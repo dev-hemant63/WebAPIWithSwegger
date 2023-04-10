@@ -12,6 +12,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.AppCode.Hellper;
+using WebAPI.AppCode.Interface;
+using WebAPI.AppCode.Services;
+using WebAPI.Models;
 
 namespace WebAPI
 {
@@ -29,6 +33,10 @@ namespace WebAPI
         {
             services.AddControllers();
             services.AddSwaggerGen();
+            services.AddMvc();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IHellper, Hellpers>();
+            Config.DBCon = Configuration.GetConnectionString("Constr");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
