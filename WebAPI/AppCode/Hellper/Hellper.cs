@@ -30,7 +30,7 @@ namespace WebAPI.AppCode.Hellper
         {
             using (SqlConnection conn = new SqlConnection(Config.DBCon))
             {
-                var res = conn.QueryAsync<T>(Procname, param, commandType: CommandType.StoredProcedure).Result;
+                var res = conn.QueryAsync<T>(Procname, param, commandType: CommandType.Text).Result;
                 return res.FirstOrDefault();
             }
         }
