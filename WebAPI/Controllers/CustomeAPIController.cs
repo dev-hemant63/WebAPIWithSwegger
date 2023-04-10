@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CusAPIController : ControllerBase
+    public class CustomeAPIController : ControllerBase
     {
         [HttpGet("GetIP")]
         public IActionResult GetIP()

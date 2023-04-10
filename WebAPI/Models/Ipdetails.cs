@@ -12,4 +12,8 @@
         public string timezone { get; set; }
         public string readme { get; set; }
     }
+    public static class Config
+    {
+        public static string DBCon { get; set; }
+    }
 }
