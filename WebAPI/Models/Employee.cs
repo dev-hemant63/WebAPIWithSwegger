@@ -6,7 +6,7 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Qualification { get; set; }
-        public string Address { get; set; }
+        public string Addess { get; set; }
         public decimal Salary { get; set; }
         public int Department { get; set; }
     }

@@ -29,12 +29,12 @@ namespace WebAPI.AppCode.Services
             if (req.Id == 0)
             {
                 sp = @"insert into tbl_Employee(FirstName,LastName,Qualification,Addess,Salary,Department,EntryDate)
-                            values(@FirstName,@LastName,@Qualification,@Address,@Salary,@Department,GETDATE())";
+                            values(@FirstName,@LastName,@Qualification,@Addess,@Salary,@Department,GETDATE())";
             }
             else
             {
                 sp = @"Update tbl_Employee set FirstName = @FirstName , LastName = @LastName,Qualification=@Qualification
-                        ,Addess = @Address,Salary=@Salary,Department=@Department,ModifyDate=GETDATE() where Id =@Id";
+                        ,Addess = @Addess,Salary=@Salary,Department=@Department,ModifyDate=GETDATE() where Id =@Id";
             }
             var i = await _helper.ExecuteProcAsync<int>(sp, new
             {
@@ -42,7 +42,7 @@ namespace WebAPI.AppCode.Services
                 req.FirstName,
                 req.LastName,
                 req.Qualification,
-                req.Address,
+                req.Addess,
                 req.Salary,
                 req.Department
             });
