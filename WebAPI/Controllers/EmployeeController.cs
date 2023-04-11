@@ -32,13 +32,23 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetEmployee()
         {
             var res = await _empservice.GetEmployee();
-            return Ok(res);
+            return Ok(new
+            {
+                Statuscode = 1,
+                Msg = "Success",
+                data = res
+            });
         }
         [HttpPost("GetEmployeeById")]
         public async Task<IActionResult> GetEmployeeById(int Id)
         {
             var res = await _empservice.GetEmployeeById(Id);
-            return Ok(res);
+            return Ok(new
+            {
+                Statuscode = 1,
+                Msg = "Success",
+                data = res
+            });
         }
         [HttpDelete("DeleteEmployee")]
         public async Task<IActionResult> DeleteEmployee(int Id)
