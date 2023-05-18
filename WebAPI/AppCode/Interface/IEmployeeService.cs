@@ -12,5 +12,7 @@ namespace WebAPI.AppCode.Interface
         Task<Response> Delete(int Id);
         Task<IEnumerable<Employee>> GetEmployee();
         Task<Employee> GetEmployeeById(int Id);
+        Task<GetNewsDB> GetNews();
+        Task<Response> AddNews(GetNewsDB req);
     }
 }

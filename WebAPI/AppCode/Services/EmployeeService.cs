@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.AppCode.Interface;
 using WebAPI.Models;
@@ -78,6 +79,33 @@ namespace WebAPI.AppCode.Services
                 Id
             });
             if(i == 1)
+            {
+                res.Statuscode = 1;
+                res.Msg = "Success";
+            }
+            return res;
+        }
+        public async Task<GetNewsDB> GetNews()
+        {
+            string sp = "select * from tbl_News";
+            var res = await _helper.GetAllAsync<GetNewsDB>(sp, null);
+            return res.FirstOrDefault();
+        }
+        public async Task<Response> AddNews(GetNewsDB req)
+        {
+            var res = new Response
+            {
+                Statuscode = -1,
+                Msg = "TempError"
+            };
+            string sp = @"insert into tbl_News(Request,Resnponse)
+                            values(@Request,@Resnponse)";
+            var i = await _helper.ExecuteProcAsync<int>(sp, new
+            {
+                req.Request,
+                req.Resnponse,
+            });
+            if (i == 1)
             {
                 res.Statuscode = 1;
                 res.Msg = "Success";
