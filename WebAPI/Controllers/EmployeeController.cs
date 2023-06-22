@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WebAPI.AppCode.Interface;
@@ -7,6 +8,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/")]
     [ApiController]
     public class EmployeeController : ControllerBase

@@ -62,7 +62,7 @@ namespace WebAPI.AppCode.Services
         public async Task<Employee> GetEmployeeById(int Id)
         {
             string sp = "select * from tbl_Employee where Id = @Id";
-            var res = await _helper.GetAsync<Employee>(sp, Id);
+            var res = await _helper.GetAsync<Employee>(sp, new { Id });
             return res;
         }
         public async Task<Response> Delete(int Id)
